@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSCD - Sehat Sehat Calon Dokter | by uchaa ✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        sscd: {
+                            teal: '#0891b2',
+                            tealLight: '#e0f2fe',
+                            navy: '#1e3a8a',
+                            navyDark: '#0f172a',
+                            accent: '#10b981',
+                            amber: '#d97706',
+                            purple: '#9333ea'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* High-Legibility Light Glass Panel */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
+        }
+
+        /* Tactile Touch Micro-Interactions */
+        .touch-tactile {
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .touch-tactile:active {
+            transform: scale(0.96);
+        }
+
+        /* Splash Screen Animation & Pulse Glow */
+        #splash-screen {
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s ease-out;
+        }
+        .splash-glow-ring {
+            animation: ringPulse 2.2s infinite ease-in-out;
+        }
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 45px rgba(147, 51, 234, 0.95)); }
+        }
+        .splash-exit {
+            opacity: 0 !important;
+            transform: scale(1.08) !important;
+            visibility: hidden !important;
+        }
+        .pulse-heart {
+            animation: heartBeat 1.3s infinite ease-in-out;
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.15); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.15); }
+            70% { transform: scale(1); }
+        }
+
+        /* Modal Animate Enter */
+        .modal-animate-enter {
+            animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* 3D Flip Card */
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { backface-visibility: hidden; }
+        .flip-card-back { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-900 font-sans min-h-screen flex flex-col antialiased selection:bg-cyan-600 selection:text-white">
+
+    <!-- BUKAAN APLIKASI (SPLASH SCREEN LAUNCH BY UCHAA ✨ - HIGHLY ANIMATED) -->
+    <div id="splash-screen" class="fixed inset-0 z-[200] bg-slate-950 flex flex-col items-center justify-center text-white p-6 overflow-hidden">
+        <!-- Ambient Background Glow Circles -->
+        <div class="absolute w-[450px] h-[450px] rounded-full bg-cyan-600/20 blur-3xl animate-pulse pointer-events-none"></div>
+        <div class="absolute w-[380px] h-[380px] rounded-full bg-purple-600/20 blur-3xl animate-pulse pointer-events-none delay-700"></div>
+
+        <div class="relative flex flex-col items-center text-center space-y-6 z-10 max-w-sm w-full">
+            
+            <!-- Neon Glowing Animated Icon Ring -->
+            <div class="relative flex items-center justify-center">
+                <div class="absolute w-32 h-32 rounded-full bg-gradient-to-tr from-cyan-400 via-teal-400 to-purple-600 animate-spin blur-md opacity-85"></div>
+                <div class="absolute w-28 h-28 rounded-full bg-gradient-to-tr from-purple-500 to-cyan-500 splash-glow-ring"></div>
+                <div class="relative w-24 h-24 rounded-3xl bg-slate-900/90 border-2 border-cyan-400/40 flex items-center justify-center text-cyan-300 text-4xl shadow-2xl backdrop-blur-md">
+                    <i class="fa-solid fa-user-doctor pulse-heart"></i>
+                </div>
+            </div>
+
+            <!-- App Title & Tagline -->
+            <div class="space-y-1">
+                <div class="flex items-center justify-center space-x-2">
+                    <h1 class="text-4xl font-black bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 bg-clip-text text-transparent tracking-tight">SSCD</h1>
+                    <span class="text-[10px] font-mono font-black px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">v4.0 Pro</span>
+                </div>
+                <p class="text-xs text-slate-300 font-medium tracking-wide">Sehat Sehat Calon Dokter • Portal Pembelajaran Dokter Muda</p>
+            </div>
+
+            <!-- Loading Progress Bar & Dynamic Counter -->
+            <div class="w-full space-y-2 pt-2">
+                <div class="flex items-center justify-between text-[11px] font-mono text-cyan-300 font-bold px-1">
+                    <span id="splash-status-text" class="animate-pulse">Menyiapkan Portal Kedokteran...</span>
+                    <span id="splash-percent-text">0%</span>
+                </div>
+                <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-cyan-500/30 p-0.5 shadow-inner">
+                    <div id="splash-progress-bar" class="h-full bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-500 rounded-full transition-all duration-150 ease-out w-0"></div>
+                </div>
+            </div>
+
+            <!-- Watermark / Author Signature -->
+            <div class="pt-2 text-slate-400 font-mono text-xs font-bold tracking-widest uppercase flex items-center space-x-1.5">
+                <span>Crafted with</span>
+                <i class="fa-solid fa-heart text-rose-500 text-xs pulse-heart"></i>
+                <span class="text-cyan-400 bg-cyan-950/70 px-2 py-0.5 rounded-md border border-cyan-500/30">by uchaa ✨</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- HEADER SSCD NAVIGATION BAR -->
+    <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Brand Logo & Tagline SSCD -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchStage('coass')">
+                    <div class="bg-gradient-to-tr from-cyan-600 via-teal-600 to-indigo-900 p-2.5 rounded-2xl shadow-md text-white flex items-center justify-center touch-tactile">
+                        <i class="fa-solid fa-user-doctor text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xl font-black bg-gradient-to-r from-cyan-700 via-teal-800 to-indigo-950 bg-clip-text text-transparent tracking-tight">SSCD</span>
+                            <span class="text-[10px] font-black px-2 py-0.5 rounded-full bg-purple-100 text-purple-900 border border-purple-300">by uchaa ✨</span>
+                        </div>
+                        <p class="text-[11px] text-slate-600 font-semibold tracking-wide">Sehat Sehat Calon Dokter • S1, Coass & Internship</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Stage Tabs (Kinestetik) -->
+                <nav class="hidden lg:flex space-x-1 bg-slate-100 p-1 rounded-2xl border border-slate-200 text-xs font-bold">
+                    <button id="nav-stage-s1" onclick="switchStage('s1')" class="stage-nav-btn touch-tactile px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-book-bookmark text-blue-600"></i>
+                        <span>S1 Pre-Klinik</span>
+                    </button>
+                    <button id="nav-stage-coass" onclick="switchStage('coass')" class="stage-nav-btn touch-tactile px-3 py-1.5 rounded-xl bg-cyan-700 text-white shadow-md transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-stethoscope"></i>
+                        <span>Coass UKMPPD</span>
+                    </button>
+                    <button id="nav-stage-internship" onclick="switchStage('internship')" class="stage-nav-btn touch-tactile px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-hospital-user text-emerald-600"></i>
+                        <span>Internship</span>
+                    </button>
+                </nav>
+
+                <!-- Audio Controller, Singer Voice Persona & Profile Badge -->
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    
+                    <!-- Singer Voice Persona Picker (Penyanyi Wanita vs Pria) -->
+                    <div class="relative">
+                        <select id="voice-persona-select" onchange="changeVoicePersona(this.value)" class="touch-tactile bg-purple-50 border border-purple-300 text-purple-900 text-xs font-bold rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-purple-600 shadow-sm cursor-pointer max-w-[130px] sm:max-w-none truncate">
+                            <option value="female" selected>🎤 Penyanyi Wanita (Melodius & Merdu)</option>
+                            <option value="male">🎵 Penyanyi Pria (Hangat & Resonan)</option>
+                        </select>
+                    </div>
+
+                    <!-- Auditori Toggle Button -->
+                    <button id="auditory-toggle-btn" onclick="toggleAuditoryMode()" class="touch-tactile px-2.5 py-1.5 rounded-xl text-xs font-bold bg-purple-100 text-purple-800 border border-purple-300 hover:bg-purple-200 transition flex items-center space-x-1.5 shadow-sm" title="Aktifkan Narasi Suara SSCD">
+                        <i id="auditory-icon" class="fa-solid fa-volume-high text-purple-600 animate-pulse"></i>
+                        <span id="auditory-text" class="hidden sm:inline">Auditori: ON</span>
+                    </button>
+
+                    <!-- User Profile Badge Launcher -->
+                    <button onclick="openAuthModal()" id="sscd-user-badge" class="touch-tactile flex items-center space-x-2 bg-white border border-slate-300 px-3 py-1.5 rounded-xl hover:border-cyan-600 transition cursor-pointer text-left shadow-sm">
+                        <div class="w-7 h-7 rounded-lg bg-cyan-100 text-cyan-800 border border-cyan-300 flex items-center justify-center font-bold text-xs shadow-sm">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <div class="hidden md:block">
+                            <div id="badge-user-name" class="text-xs font-black text-slate-900 leading-tight">Masuk / Onboarding</div>
+                            <div class="text-[10px] text-cyan-800 font-mono flex items-center space-x-1 font-semibold">
+                                <span id="badge-user-stage" class="truncate max-w-[100px]">Klik Sign In</span>
+                                <span>•</span>
+                                <span id="badge-user-ipk" class="text-amber-700 font-bold">Target IPK</span>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SUB-HEADER PILL BAR NAVIGASI MODUL UTAMA (NON-OVERLAPPING SCROLL BAR) -->
+        <div class="bg-slate-50 border-t border-slate-200 py-2 px-4 shadow-inner overflow-x-auto no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center space-x-2 text-xs font-bold min-w-max">
+                <button id="tab-btn-dashboard" onclick="switchTab('dashboard')" class="module-tab-btn touch-tactile px-3.5 py-1.5 rounded-xl bg-cyan-700 text-white shadow-sm transition flex items-center space-x-2">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <span>Dashboard & Alunan Melodi</span>
+                </button>
+                <button id="tab-btn-osce" onclick="switchTab('osce')" class="module-tab-btn touch-tactile px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-2">
+                    <i class="fa-solid fa-microphone text-rose-600"></i>
+                    <span>Live Voice OSCE</span>
+                </button>
+                <button id="tab-btn-cbt" onclick="switchTab('cbt')" class="module-tab-btn touch-tactile px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-2">
+                    <i class="fa-solid fa-list-check text-emerald-600"></i>
+                    <span>Drill CBT UKMPPD</span>
+                </button>
+                <button id="tab-btn-mnemonics" onclick="switchTab('mnemonics')" class="module-tab-btn touch-tactile px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-2">
+                    <i class="fa-solid fa-brain text-purple-600"></i>
+                    <span>Mnemonic Vault 3D</span>
+                </button>
+                <button id="tab-btn-lab" onclick="switchTab('lab')" class="module-tab-btn touch-tactile px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-2">
+                    <i class="fa-solid fa-microscope text-amber-600"></i>
+                    <span>Visual Lab Canvas</span>
+                </button>
+                <button id="tab-btn-ai" onclick="switchTab('ai')" class="module-tab-btn touch-tactile px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-2">
+                    <i class="fa-solid fa-robot text-indigo-600"></i>
+                    <span>Gemini AI Tutor</span>
+                </button>
+                <button id="tab-btn-elib" onclick="switchTab('elib')" class="module-tab-btn touch-tactile px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white transition flex items-center space-x-2">
+                    <i class="fa-solid fa-book-medical text-teal-600"></i>
+                    <span>E-Library & PPT</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN WORKSPACE CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        
+        <!-- ========================================================================= -->
+        <!-- MODULE 1: DASHBOARD & ALUNAN MELODI MOTIVASI -->
+        <!-- ========================================================================= -->
+        <section id="module-tab-dashboard" class="module-tab-content space-y-6">
+            
+            <!-- Welcome Banner Hero -->
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-cyan-900 via-teal-900 to-indigo-950 text-white relative overflow-hidden shadow-xl">
+                <div class="absolute -right-10 -bottom-10 opacity-15 pointer-events-none">
+                    <i class="fa-solid fa-heart-pulse text-9xl"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Official Portal SSCD • by uchaa ✨</span>
+                    </div>
+                    
+                    <h1 class="text-2xl sm:text-3xl font-black tracking-tight leading-snug">
+                        Selamat Belajar, <span id="hero-welcome-name" class="text-cyan-300">Dokter Muda!</span>
+                    </h1>
+                    
+                    <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                        Platform pembelajaran terpadu berbasis modul Kinestetik & Auditori dari jenjang S1 Kedokteran, Stase Klinik Coass, Ujian CBT UKMPPD, hingga Dokter Internship.
+                    </p>
+
+                    <!-- DAILY MOTIVATION QUOTES BOOSTER FK (SINGER STYLE) -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 space-y-3">
+                        <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-2 gap-2">
+                            <div class="flex items-center space-x-2 text-xs font-black uppercase tracking-wider text-amber-300">
+                                <i class="fa-solid fa-music text-amber-300 text-sm animate-pulse"></i>
+                                <span>Alunan Melodi Motivasi Dokter Mentor</span>
+                            </div>
+                            <span id="quote-persona-badge" class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-purple-600 text-white border border-purple-300">
+                                🎤 Penyanyi Wanita (Melodius & Merdu)
+                            </span>
+                        </div>
+
+                        <p id="daily-quote-text" class="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed italic">
+                            "Di antara riuhnya lorong stase dan lelahnya malam penuh lembaran buku, ada doa yang mengalun bagai nada terindah. Setiap penatmu hari ini adalah irama sembuh pasienmu esok hari. Mari bernyanyi kecil, 20 soal hari ini adalah melodi manismu menuju lulus UKMPPD One Shot."
+                        </p>
+
+                        <div class="flex items-center justify-between pt-1">
+                            <button onclick="playDailyQuoteAudio()" class="touch-tactile px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold text-xs flex items-center space-x-2 shadow-md">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Dengar Suara Melodi</span>
+                            </button>
+                            <button onclick="cycleDailyQuote()" class="touch-tactile text-xs font-bold text-cyan-300 hover:text-cyan-100 flex items-center space-x-1">
+                                <i class="fa-solid fa-rotate"></i>
+                                <span>Ganti Alunan</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="openAuthModal()" class="touch-tactile px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition flex items-center space-x-2">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>Lengkapi Profile & No. HP WA</span>
+                        </button>
+                        <button onclick="simulateNotificationAlert()" class="touch-tactile px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-xl border border-white/20 transition flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Uji Coba Pengingat WA Harian</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Dashboard Summary Display Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-panel p-5 rounded-2xl flex items-center space-x-4 border-l-4 border-l-cyan-600">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-800 border border-cyan-300 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">No. HP WA Terdaftar</div>
+                        <div id="dash-phone" class="text-sm font-black text-slate-900 font-mono mt-0.5">Belum Masuk</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-2xl flex items-center space-x-4 border-l-4 border-l-indigo-600">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-800 border border-indigo-300 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Universitas / FK</div>
+                        <div id="dash-univ" class="text-sm font-black text-slate-900 truncate max-w-[140px] mt-0.5">-</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-2xl flex items-center space-x-4 border-l-4 border-l-amber-500">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">IPK / Target UKMPPD</div>
+                        <div id="dash-ipk" class="text-sm font-black text-slate-900 font-mono mt-0.5">- / -</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-2xl flex items-center space-x-4 border-l-4 border-l-emerald-600">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Notifikasi Harian WA</div>
+                        <div id="dash-alert-status" class="text-sm font-black text-emerald-700 mt-0.5">Belum Aktif</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MODULE 2: LIVE VOICE NOTE OSCE SIMULATOR -->
+        <!-- ========================================================================= -->
+        <section id="module-tab-osce" class="module-tab-content hidden space-y-6">
+            <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-rose-600">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-extrabold text-rose-700 uppercase tracking-widest mb-1">
+                        <i class="fa-solid fa-microphone"></i>
+                        <span>SIMULASI STATION OSCE LIVE VOICE NOTE • REAL-TIME PASIEN VIRTUAL</span>
+                    </div>
+                    <h2 class="text-xl font-black text-slate-900">Pasien Ruang IGD / Poliklinik Hematologi</h2>
+                </div>
+                <button onclick="speakText('Pasien Ny. Rahmawati 26 tahun mengeluh lemas berat dan pusing berputar sejak 3 bulan. Silakan lakukan anamnesis lisan.')" class="touch-tactile px-3.5 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-sm">
+                    <i class="fa-solid fa-circle-play mr-1"></i> Dengarkan Pasien
+                </button>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl space-y-4 bg-white">
+                <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 border border-rose-300 flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-hospital-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-black text-slate-900">Ny. Rahmawati (26 Tahun)</h3>
+                        <p class="text-xs text-slate-600 font-medium">Anamnesis Lisan & Respon Pasien Auditori Real-Time</p>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-900 text-slate-100 rounded-2xl font-mono text-xs space-y-2">
+                    <div class="text-cyan-400 font-bold border-b border-slate-800 pb-1">INTERAKSI SUARA ANAMNESIS:</div>
+                    <div id="osce-voice-log" class="space-y-1 text-[11px] text-slate-300">
+                        <p class="text-slate-400 italic">Tekan tombol pertanyaan di bawah untuk mendengar dialog suara pasien...</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    <button onclick="triggerOsceAudioQuestion('pola_makan')" class="touch-tactile p-3.5 bg-white hover:bg-rose-50 border border-slate-300 rounded-xl text-left text-xs font-bold text-slate-800 transition flex items-center justify-between shadow-sm">
+                        <span>"Bagaimana pola makan & minum teh sehari-hari?"</span>
+                        <i class="fa-solid fa-volume-high text-rose-600"></i>
+                    </button>
+                    <button onclick="triggerOsceAudioQuestion('menstruasi')" class="touch-tactile p-3.5 bg-white hover:bg-rose-50 border border-slate-300 rounded-xl text-left text-xs font-bold text-slate-800 transition flex items-center justify-between shadow-sm">
+                        <span>"Bagaimana riwayat durasi & pembalut haid?"</span>
+                        <i class="fa-solid fa-volume-high text-rose-600"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MODULE 3: DRILL CBT UKMPPD -->
+        <!-- ========================================================================= -->
+        <section id="module-tab-cbt" class="module-tab-content hidden space-y-6">
+            <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-emerald-600">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-extrabold text-emerald-800 uppercase tracking-widest mb-1">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>DRILL SOAL VIGNETTE CBT UKMPPD & EBM RATIONALE</span>
+                    </div>
+                    <h2 class="text-xl font-black text-slate-900">Soal SKDI 4A - Anemia Defisiensi Besi</h2>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <p id="cbt-vignette-text" class="text-xs text-slate-800 leading-relaxed font-semibold">
+                    Seorang wanita 28 tahun mengeluh lemas dan kuku sendok (koilonikia). Hasil lab: Hb 7.8 g/dL, MCV 64 fL, MCH 20 pg. Manakah parameter laboratorium paling sensitif mengukur cadangan besi?
+                </p>
+
+                <div id="cbt-options" class="space-y-2.5">
+                    <button onclick="checkCbtAnswer(0)" class="w-full p-3 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl text-left text-xs font-bold text-slate-800 transition">A. Serum Iron (SI)</button>
+                    <button onclick="checkCbtAnswer(1)" class="w-full p-3 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl text-left text-xs font-bold text-slate-800 transition">B. Total Iron Binding Capacity (TIBC)</button>
+                    <button onclick="checkCbtAnswer(2)" class="w-full p-3 bg-emerald-50 border border-emerald-400 rounded-xl text-left text-xs font-extrabold text-emerald-900 transition">C. Ferritin Serum (Jawaban Tepat)</button>
+                    <button onclick="checkCbtAnswer(3)" class="w-full p-3 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl text-left text-xs font-bold text-slate-800 transition">D. Saturasi Transferin</button>
+                </div>
+
+                <div id="cbt-rationale" class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950 font-medium leading-relaxed">
+                    <strong class="text-emerald-900 font-extrabold block mb-1">Rationale EBM:</strong>
+                    Ferritin serum adalah baku emas tersensitif untuk mengukur depresi cadangan besi jaringan total (< 15 ng/mL).
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MODULE 4: MNEMONIC VAULT 3D -->
+        <!-- ========================================================================= -->
+        <section id="module-tab-mnemonics" class="module-tab-content hidden space-y-6">
+            <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-purple-600">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-extrabold text-purple-800 uppercase tracking-widest mb-1">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>MNEMONIC VAULT 3D & MEMORY FLASHCARDS KINESTETIK</span>
+                    </div>
+                    <h2 class="text-xl font-black text-slate-900">Kartu Hafalan Klinis Ringkas</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md">
+                        <div class="flip-card-front absolute w-full h-full glass-panel p-5 rounded-2xl flex flex-col justify-between border-purple-300">
+                            <div>
+                                <span class="text-[10px] font-black text-purple-700 uppercase">ANEMIA MIKROSITIK</span>
+                                <h3 class="text-xl font-black text-slate-900 mt-1">Mnemonic TAILS</h3>
+                                <p class="text-xs text-slate-600 mt-2">Diferensial utama anemia dengan MCV &lt; 80 fL.</p>
+                            </div>
+                            <span class="text-[11px] font-bold text-purple-600">Klik untuk balik kartu 🔄</span>
+                        </div>
+                        <div class="flip-card-back absolute w-full h-full bg-slate-900 text-white p-5 rounded-2xl flex flex-col justify-between border-purple-500">
+                            <ul class="text-xs font-mono space-y-1 text-cyan-300">
+                                <li><strong>T:</strong> Thalassemia</li>
+                                <li><strong>A:</strong> Anemia Chronic Disease</li>
+                                <li><strong>I:</strong> Iron Deficiency (ADB)</li>
+                                <li><strong>L:</strong> Lead Poisoning</li>
+                                <li><strong>S:</strong> Sideroblastic Anemia</li>
+                            </ul>
+                            <button onclick="event.stopPropagation(); speakText('Mnemonic TAILS: Thalassemia, Anemia of Chronic Disease, Iron Deficiency Anemia, Lead Poisoning, dan Sideroblastic Anemia.')" class="py-1.5 bg-purple-600 text-white rounded-xl text-xs font-bold">Dengar Suara 🎤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MODULE 5: VISUAL LAB CANVAS MICROSCOPE -->
+        <!-- ========================================================================= -->
+        <section id="module-tab-lab" class="module-tab-content hidden space-y-6">
+            <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-amber-500">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-extrabold text-amber-800 uppercase tracking-widest mb-1">
+                        <i class="fa-solid fa-microscope"></i>
+                        <span>SIMULATOR MIKROSKOP KINESTETIK & CANVAS ALIRAN DARAH</span>
+                    </div>
+                    <h2 class="text-xl font-black text-slate-900" id="micro-title">Preparat: Eritrosit Normal (Normositik)</h2>
+                </div>
+                <button onclick="toggleLabAnimation()" id="lab-anim-btn" class="touch-tactile px-3.5 py-2 bg-amber-600 text-white text-xs font-bold rounded-xl shadow-sm">
+                    <i class="fa-solid fa-play mr-1"></i> Putar Aliran Darah
+                </button>
+            </div>
+
+            <div class="glass-panel p-4 rounded-2xl bg-slate-950 border-slate-800 flex flex-col items-center">
+                <canvas id="blood-canvas" width="650" height="280" class="w-full max-w-full rounded-xl bg-slate-900 border border-slate-800 cursor-crosshair"></canvas>
+                <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 text-xs font-mono text-slate-300">
+                    <div class="flex items-center space-x-3">
+                        <span>Perbesaran Lensa:</span>
+                        <input type="range" min="0.5" max="2" step="0.1" value="1" id="slider-zoom" oninput="drawBloodFrame()" class="accent-amber-500 cursor-pointer">
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span>Kecepatan Aliran:</span>
+                        <input type="range" min="0.2" max="3" step="0.2" value="1" id="slider-speed" class="accent-cyan-500 cursor-pointer">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MODULE 6: GEMINI 3 FLASH AI TUTOR -->
+        <!-- ========================================================================= -->
+        <section id="module-tab-ai" class="module-tab-content hidden space-y-6">
+            <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-indigo-600">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-extrabold text-indigo-800 uppercase tracking-widest mb-1">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>GEMINI 3 FLASH AI CLINICAL TUTOR</span>
+                    </div>
+                    <h2 class="text-xl font-black text-slate-900">Diskusi Kasus & Bimbingan Belajar Real-Time</h2>
+                </div>
+            </div>
+
+            <div class="glass-panel p-5 rounded-2xl h-[480px] flex flex-col justify-between bg-white">
+                <div id="ai-chat-box" class="flex-grow overflow-y-auto space-y-3 pr-2 text-xs">
+                    <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-2xl text-indigo-950 font-medium">
+                        Halo Dokter Muda! Saya Gemini AI Tutor SSCD. Ada kasus stase atau soal UKMPPD yang ingin kita diskusikan?
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-2 pt-3 border-t border-slate-200">
+                    <input type="text" id="ai-input-text" onkeypress="if(event.key==='Enter') sendAiMessage()" placeholder="Tanyakan patofisiologi, dosis obat, atau kriteria lab..." class="flex-grow bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-900 focus:outline-none focus:border-indigo-600">
+                    <button onclick="sendAiMessage()" class="touch-tactile px-4 py-2.5 bg-indigo-600 text-white font-bold text-xs rounded-xl shadow-md">Kirim</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MODULE 7: E-LIBRARY & PPT HUB -->
+        <!-- ========================================================================= -->
+        <section id="module-tab-elib" class="module-tab-content hidden space-y-6">
+            <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-teal-600">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-extrabold text-teal-800 uppercase tracking-widest mb-1">
+                        <i class="fa-solid fa-book-medical"></i>
+                        <span>E-LIBRARY & SLIDE PRESENTASI DOSEN FK</span>
+                    </div>
+                    <h2 class="text-xl font-black text-slate-900">Modul Ringkas & Slide Kuliah Hematologi</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-5 bg-white border border-slate-200 rounded-2xl space-y-2 shadow-sm">
+                    <span class="text-[10px] font-black text-teal-700 uppercase bg-teal-50 px-2 py-0.5 rounded border border-teal-200">PPT LECTURE</span>
+                    <h4 class="text-sm font-black text-slate-900">Slide Pendekatan Anemia Defisiensi Besi.ppt</h4>
+                    <p class="text-xs text-slate-600">Departemen Penyakit Dalam • 18 Slide Interaktif</p>
+                    <button onclick="showToast('Membuka Slide PPT Kuliah...')" class="touch-tactile w-full py-2 bg-teal-700 text-white font-bold text-xs rounded-xl">Buka Slide Presentasi</button>
+                </div>
+                <div class="p-5 bg-white border border-slate-200 rounded-2xl space-y-2 shadow-sm">
+                    <span class="text-[10px] font-black text-amber-700 uppercase bg-amber-50 px-2 py-0.5 rounded border border-amber-200">PDF GUIDE</span>
+                    <h4 class="text-sm font-black text-slate-900">Buku Saku Diagnostik Lab Hematologi.pdf</h4>
+                    <p class="text-xs text-slate-600">Panduan Praktik Klinik Dokter Umum</p>
+                    <button onclick="showToast('Mengunduh Modul Ringkasan PDF...')" class="touch-tactile w-full py-2 bg-amber-600 text-white font-bold text-xs rounded-xl">Unduh Modul PDF</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- POP-UP MODAL LOGIN & SIGN IN SSCD (CLEAN FORM) -->
+    <div id="sscd-auth-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4 transition-all duration-300">
+        <div class="glass-panel w-full max-w-lg p-6 sm:p-8 rounded-3xl border border-cyan-300 shadow-2xl relative bg-white modal-animate-enter max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 transition p-2 text-sm rounded-xl hover:bg-slate-100">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-600 to-indigo-900 text-white text-2xl font-bold shadow-lg mb-2">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <h3 class="text-xl font-black text-slate-900">SSCD Sign In & Onboarding</h3>
+                <p class="text-xs text-slate-600 font-medium mt-0.5">Crafted with ❤️ by uchaa ✨</p>
+            </div>
+
+            <!-- Form Tanpa Data Dummy Bawaan -->
+            <form id="sscd-auth-form" onsubmit="saveSscdProfile(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-800 uppercase mb-1">No. HP / WhatsApp <span class="text-rose-500">*</span></label>
+                        <input type="tel" id="input-phone" required placeholder="081234567890" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono font-bold text-slate-900 focus:outline-none focus:border-cyan-600">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-800 uppercase mb-1">Kata Sandi (Password) <span class="text-rose-500">*</span></label>
+                        <input type="password" id="input-password" required placeholder="Masukkan password..." class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:border-cyan-600">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-800 uppercase mb-1">Nama Lengkap & Gelar <span class="text-rose-500">*</span></label>
+                        <input type="text" id="input-name" required placeholder="Dokter Muda / Nama Lengkap" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:border-cyan-600">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-800 uppercase mb-1">Fakultas Kedokteran / Univ <span class="text-rose-500">*</span></label>
+                        <input type="text" id="input-univ" required placeholder="Contoh: FK UI / FK Unair" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:border-cyan-600">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-800 uppercase mb-1">Jenjang Saat Ini</label>
+                        <select id="input-level" class="w-full bg-white border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-900 focus:outline-none focus:border-cyan-600">
+                            <option value="S1 Pre-Klinik">S1 Pre-Klinik</option>
+                            <option value="Coass / Klinik" selected>Coass / Klinik</option>
+                            <option value="Dokter Internship">Dokter Internship</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-800 uppercase mb-1">IPK Saat Ini</label>
+                        <input type="number" step="0.01" min="0" max="4.00" id="input-ipk" required placeholder="3.50" class="w-full bg-white border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold font-mono text-slate-900 focus:outline-none focus:border-cyan-600">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-800 uppercase mb-1">Target IPK/UKMPPD</label>
+                        <input type="number" step="0.01" min="0" max="4.00" id="input-target-ipk" required placeholder="3.85" class="w-full bg-white border border-cyan-400 rounded-xl px-2.5 py-2 text-xs font-bold font-mono text-slate-900 focus:outline-none focus:border-cyan-600">
+                    </div>
+                </div>
+
+                <label class="flex items-start space-x-3 p-3 rounded-2xl bg-emerald-50 border border-emerald-300 cursor-pointer shadow-sm">
+                    <input type="checkbox" id="chk-daily-wa" class="rounded border-emerald-400 text-emerald-600 focus:ring-emerald-500 mt-0.5" checked>
+                    <div class="text-[11px] text-emerald-950 font-medium">
+                        <strong class="block text-emerald-900 font-extrabold">Kirimkan Peringatan Harian SSCD via WhatsApp</strong>
+                        Terima latihan soal harian, pengingat target IPK/UKMPPD, dan rangkuman progres perkembangan setiap hari.
+                    </div>
+                </label>
+
+                <button type="submit" class="touch-tactile w-full py-3 bg-gradient-to-r from-cyan-600 via-teal-600 to-indigo-900 hover:from-cyan-700 hover:to-indigo-950 text-white font-black text-xs rounded-xl shadow-md transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span id="btn-submit-text">Masuk & Aktifkan Notifikasi Harian SSCD</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-[300] space-y-2 pointer-events-none"></div>
+
+    <!-- SCRIPT APPLICATION LOGIC -->
+    <script>
+        const synth = window.speechSynthesis;
+        let isAuditoryMode = true;
+        let currentVoicePersona = "female"; // Default: Singer Female Persona
+
+        // User State (Default Kosong)
+        let sscdUser = {
+            phone: "",
+            password: "",
+            name: "",
+            univ: "",
+            level: "Coass / Klinik",
+            ipk: "",
+            targetIpk: "",
+            dailyWaAlerts: true,
+            isLoggedIn: false
+        };
+
+        // Singer Motivation Quotes Dataset
+        const dailyQuotes = [
+            {
+                persona: "female",
+                text: "Di antara riuhnya lorong stase dan lelahnya malam penuh lembaran buku, ada doa yang mengalun bagai nada terindah. Setiap penatmu hari ini adalah irama sembuh pasienmu esok hari. Mari bernyanyi kecil, 20 soal hari ini adalah melodi manismu menuju lulus UKMPPD One Shot.",
+                badge: "🎤 Penyanyi Wanita (Melodius & Merdu)"
+            },
+            {
+                persona: "male",
+                text: "Bila lelah menyapa di tengah dinginnya jaga malam, dengarkan alunan asa dalam dadamu. Setiap perjuanganmu mengukir nada-nada indah menuju takdir menjadi dokter yang berhati hangat.",
+                badge: "🎵 Penyanyi Pria (Hangat & Resonan)"
+            },
+            {
+                persona: "female",
+                text: "Ilmu kedokteran bagaikan simfoni indah. Pelan-pelan kita nikmati alunan belajar hari ini dengan senyuman dan nyanyian hangat ya Dokter Muda.",
+                badge: "🎤 Penyanyi Wanita (Melodius & Merdu)"
+            }
+        ];
+        let currentQuoteIndex = 0;
+
+        // Window Onload Handler
+        window.onload = function() {
+            initBloodCanvas();
+
+            // Animasi Loading Progress Bar Splash Screen & Trigger Pop-Up Sign In Wajib
+            let progress = 0;
+            const progressBar = document.getElementById('splash-progress-bar');
+            const percentText = document.getElementById('splash-percent-text');
+            const statusText = document.getElementById('splash-status-text');
+
+            const loadingInterval = setInterval(() => {
+                progress += Math.floor(Math.random() * 14) + 8;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(loadingInterval);
+                    if (statusText) statusText.innerText = "Selamat Datang Dokter Muda!";
+                    
+                    // Fade-out Splash Screen & Tampilkan Modal Login Wajib
+                    setTimeout(() => {
+                        const splash = document.getElementById('splash-screen');
+                        if (splash) splash.classList.add('splash-exit');
+                        
+                        setTimeout(() => {
+                            openAuthModal();
+                            showToast("Wajib Sign In / Onboarding untuk Akses Penuh SSCD ✨");
+                            speakText("Selamat datang di Portal SSCD! Silakan melakukan Sign In untuk memulai latihan.");
+                        }, 400);
+                    }, 350);
+                }
+                if (progressBar) progressBar.style.width = progress + '%';
+                if (percentText) percentText.innerText = progress + '%';
+            }, 110);
+        };
+
+        // Voice Persona Switcher
+        function changeVoicePersona(val) {
+            currentVoicePersona = val;
+            const quoteBadge = document.getElementById('quote-persona-badge');
+            if (val === 'male') {
+                quoteBadge.innerText = "🎵 Penyanyi Pria (Hangat & Resonan)";
+                quoteBadge.className = "text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-cyan-700 text-white border border-cyan-300";
+                speakText("Suara Penyanyi Pria aktif. Tetap semangat dan mengalun indah dalam belajar ya!");
+            } else {
+                quoteBadge.innerText = "🎤 Penyanyi Wanita (Melodius & Merdu)";
+                quoteBadge.className = "text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-purple-600 text-white border border-purple-300";
+                speakText("Halo Dokter Muda! Suara Penyanyi Wanita aktif. Yuk semangat latihan hari ini!");
+            }
+        }
+
+        function cycleDailyQuote() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % dailyQuotes.length;
+            const q = dailyQuotes[currentQuoteIndex];
+            document.getElementById('daily-quote-text').innerText = `"${q.text}"`;
+            changeVoicePersona(q.persona);
+            document.getElementById('voice-persona-select').value = q.persona;
+        }
+
+        function playDailyQuoteAudio() {
+            const text = document.getElementById('daily-quote-text').innerText;
+            speakText(text);
+        }
+
+        // Gemini 2.5 Flash Neural TTS API Integration (Singer Tone Tuning)
+        let currentAudioPlayer = null;
+
+        async function speakText(text) {
+            if (!isAuditoryMode) return;
+            const cleanText = stripAsterisks(text);
+            if (!cleanText) return;
+
+            if (currentAudioPlayer) {
+                currentAudioPlayer.pause();
+                currentAudioPlayer = null;
+            }
+            if ('speechSynthesis' in window) synth.cancel();
+
+            const iconEl = document.getElementById('auditory-icon');
+            if (iconEl) iconEl.className = "fa-solid fa-spinner fa-spin text-purple-600";
+
+            try {
+                const apiKey = ""; // Provided by environment runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+                
+                let promptInstruction = "Say in a melodious, sweet, rhythmic, singer-like Indonesian female voice with a gentle musical cadence: ";
+                let selectedVoice = "Aoede";
+
+                if (currentVoicePersona === 'male') {
+                    promptInstruction = "Say in a deep, warm, resonant, acoustic singer-like Indonesian male voice with a smooth melodic cadence: ";
+                    selectedVoice = "Puck";
+                }
+
+                const payload = {
+                    contents: [{
+                        parts: [{ text: `${promptInstruction} "${cleanText}"` }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: selectedVoice }
+                            }
+                        }
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioBase64 = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType || "";
+
+                if (audioBase64) {
+                    let sampleRate = 24000;
+                    const match = mimeType.match(/rate=(\d+)/);
+                    if (match && match[1]) sampleRate = parseInt(match[1], 10);
+
+                    const pcmData = base64ToArrayBuffer(audioBase64);
+                    const pcm16 = new Int16Array(pcmData);
+                    const wavBlob = pcmToWav(pcm16, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+
+                    currentAudioPlayer = new Audio(audioUrl);
+                    currentAudioPlayer.onended = () => {
+                        if (iconEl) iconEl.className = "fa-solid fa-volume-high text-purple-600 animate-pulse";
+                    };
+                    currentAudioPlayer.onerror = () => { fallbackBrowserSpeech(cleanText); };
+                    currentAudioPlayer.play();
+                } else {
+                    fallbackBrowserSpeech(cleanText);
+                }
+            } catch (err) {
+                console.warn("Gemini Neural TTS fallback to browser:", err);
+                fallbackBrowserSpeech(cleanText);
+            } finally {
+                if (iconEl && !currentAudioPlayer) {
+                    iconEl.className = "fa-solid fa-volume-high text-purple-600 animate-pulse";
+                }
+            }
+        }
+
+        function fallbackBrowserSpeech(text) {
+            if (!('speechSynthesis' in window)) return;
+            synth.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'id-ID';
+            utterance.rate = 0.95;
+            synth.speak(utterance);
+        }
+
+        function stripAsterisks(text) {
+            return text ? text.replace(/\*/g, '') : '';
+        }
+
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcm16Array, sampleRate) {
+            const numChannels = 1;
+            const bytesPerSample = 2;
+            const blockAlign = numChannels * bytesPerSample;
+            const byteRate = sampleRate * blockAlign;
+            const dataSize = pcm16Array.length * bytesPerSample;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            const writeString = (offset, string) => {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            };
+
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, 16, true);
+            writeString(36, 'data');
+            view.setUint32(40, dataSize, true);
+
+            let offset = 44;
+            for (let i = 0; i < pcm16Array.length; i++, offset += 2) {
+                view.setInt16(offset, pcm16Array[i], true);
+            }
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        // Navigation Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.module-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.module-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-cyan-700', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeTab = document.getElementById(`module-tab-${tabId}`);
+            if (activeTab) activeTab.classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-cyan-700', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            speakText(`Modul ${tabId.toUpperCase()} dibuka`);
+        }
+
+        function switchStage(stage) {
+            document.querySelectorAll('.stage-nav-btn').forEach(btn => {
+                btn.classList.remove('bg-cyan-700', 'text-white', 'shadow-md');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`nav-stage-${stage}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-cyan-700', 'text-white', 'shadow-md');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            showToast(`Beralih ke jenjang ${stage.toUpperCase()}`);
+        }
+
+        function toggleAuditoryMode() {
+            isAuditoryMode = !isAuditoryMode;
+            const textEl = document.getElementById('auditory-text');
+            const iconEl = document.getElementById('auditory-icon');
+
+            if (isAuditoryMode) {
+                textEl.innerText = "Auditori: ON";
+                iconEl.className = "fa-solid fa-volume-high text-purple-600 animate-pulse";
+                speakText("Modus Suara SSCD diaktifkan.");
+            } else {
+                textEl.innerText = "Auditori: OFF";
+                iconEl.className = "fa-solid fa-volume-xmark text-slate-400";
+                if (currentAudioPlayer) currentAudioPlayer.pause();
+                synth.cancel();
+            }
+        }
+
+        // Modal Handlers
+        function openAuthModal() {
+            const modal = document.getElementById('sscd-auth-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById('sscd-auth-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function saveSscdProfile(e) {
+            e.preventDefault();
+            const phone = document.getElementById('input-phone').value.trim();
+            const password = document.getElementById('input-password').value.trim();
+            const name = document.getElementById('input-name').value.trim();
+            const univ = document.getElementById('input-univ').value.trim();
+            const level = document.getElementById('input-level').value;
+            const ipk = parseFloat(document.getElementById('input-ipk').value);
+            const targetIpk = parseFloat(document.getElementById('input-target-ipk').value);
+            const dailyWa = document.getElementById('chk-daily-wa').checked;
+
+            if (!phone || !name || !univ || isNaN(ipk) || isNaN(targetIpk)) {
+                showToast("Harap lengkapi seluruh formulir!");
+                return;
+            }
+
+            sscdUser = {
+                phone, password, name, univ, level,
+                ipk: ipk.toFixed(2),
+                targetIpk: targetIpk.toFixed(2),
+                dailyWaAlerts: dailyWa,
+                isLoggedIn: true
+            };
+
+            document.getElementById('badge-user-name').innerText = name;
+            document.getElementById('badge-user-stage').innerText = level;
+            document.getElementById('badge-user-ipk').innerText = `Target: ${targetIpk.toFixed(2)}`;
+
+            document.getElementById('hero-welcome-name').innerText = `Dokter ${name}!`;
+            document.getElementById('dash-phone').innerText = phone;
+            document.getElementById('dash-univ').innerText = univ;
+            document.getElementById('dash-ipk').innerText = `${ipk.toFixed(2)} / ${targetIpk.toFixed(2)}`;
+            document.getElementById('dash-alert-status').innerText = dailyWa ? "AKTIF HARIAN" : "NONAKTIF";
+
+            closeAuthModal();
+            showToast(`Profil Dokter ${name} berhasil disimpan!`);
+            speakText(`Selamat bergabung Dokter ${name}! Profile dan target IPK ${targetIpk.toFixed(2)} siap dicapai.`);
+        }
+
+        // Canvas Blood Simulation Loop
+        let canvas, ctx, isAnimRunning = false, animId = null;
+        let particles = [];
+
+        function initBloodCanvas() {
+            canvas = document.getElementById('blood-canvas');
+            if (!canvas) return;
+            ctx = canvas.getContext('2d');
+            particles = [];
+            for (let i = 0; i < 20; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: 12 + Math.random() * 4,
+                    speed: 0.8 + Math.random() * 1.5
+                });
+            }
+            drawBloodFrame();
+        }
+
+        function drawBloodFrame() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const zoom = parseFloat(document.getElementById('slider-zoom').value || 1);
+
+            ctx.save();
+            ctx.scale(zoom, zoom);
+
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#e11d48';
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius * 0.4, 0, Math.PI * 2);
+                ctx.fillStyle = '#fda4af';
+                ctx.fill();
+            });
+
+            ctx.restore();
+        }
+
+        function toggleLabAnimation() {
+            isAnimRunning = !isAnimRunning;
+            const btn = document.getElementById('lab-anim-btn');
+            if (isAnimRunning) {
+                btn.innerHTML = `<i class="fa-solid fa-pause mr-1"></i> Hentikan Aliran`;
+                animLoop();
+            } else {
+                btn.innerHTML = `<i class="fa-solid fa-play mr-1"></i> Putar Aliran Darah`;
+                cancelAnimationFrame(animId);
+            }
+        }
+
+        function animLoop() {
+            const speed = parseFloat(document.getElementById('slider-speed').value || 1);
+            particles.forEach(p => {
+                p.x += p.speed * speed;
+                if (p.x > canvas.width + 20) p.x = -20;
+            });
+            drawBloodFrame();
+            if (isAnimRunning) animId = requestAnimationFrame(animLoop);
+        }
+
+        // OSCE & CBT Helpers
+        function triggerOsceAudioQuestion(type) {
+            const log = document.getElementById('osce-voice-log');
+            let text = "Pasien: 'Saya jarang makan daging merah Dok, dan selalu minum teh manis pekat.'";
+            if (type === 'menstruasi') text = "Pasien: 'Haid 8 hari deras banget Dok, ganti pembalut 5 kali sehari.'";
+            
+            log.innerHTML += `<p class="mt-1 text-cyan-300">➜ ${text}</p>`;
+            speakText(text);
+        }
+
+        function checkCbtAnswer(idx) {
+            if (idx === 2) {
+                showToast("Jawaban Tepat! (C. Ferritin Serum)");
+                speakText("Jawaban kamu tepat sekali! Ferritin serum adalah baku emas sensitivitas cadangan besi.");
+            } else {
+                showToast("Jawaban kurang tepat. Pelajari Rationale!");
+                speakText("Jawaban belum tepat, perhatikan kadar ferritin serum.");
+            }
+        }
+
+        async function sendAiMessage() {
+            const input = document.getElementById('ai-input-text');
+            const txt = input.value.trim();
+            if (!txt) return;
+
+            const box = document.getElementById('ai-chat-box');
+            box.innerHTML += `<div class="p-3 bg-cyan-900 text-cyan-100 rounded-2xl font-medium text-right">${txt}</div>`;
+            input.value = '';
+
+            const loadingId = 'ai-load-' + Date.now();
+            box.innerHTML += `<div id="${loadingId}" class="p-3 bg-slate-100 text-slate-500 rounded-2xl italic">Gemini sedang mengetik penjelasan medis...</div>`;
+            box.scrollTop = box.scrollHeight;
+
+            try {
+                const apiKey = ""; // Provided by environment runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: txt }] }],
+                    systemInstruction: { parts: [{ text: "Bertindak sebagai Dokter Spesialis Penyakit Dalam / Hematologi senior yang mengajar Dokter Muda. Jawab dengan ringkas dan klinis." }] }
+                };
+
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf Dokter, sistem AI sedang offline.";
+
+                document.getElementById(loadingId).remove();
+                box.innerHTML += `<div class="p-3 bg-indigo-50 border border-indigo-200 text-indigo-950 rounded-2xl font-medium">${reply.replace(/\n/g, '<br>')}</div>`;
+                box.scrollTop = box.scrollHeight;
+                speakText("Jawaban Gemini AI Tutor telah siap.");
+            } catch (err) {
+                document.getElementById(loadingId).remove();
+                box.innerHTML += `<div class="p-2 text-rose-600">Gagal terhubung ke AI Tutor: ${err.message}</div>`;
+            }
+        }
+
+        // Custom Toast System
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = "bg-slate-900 text-white font-bold text-xs px-4 py-3 rounded-2xl shadow-xl border border-cyan-400/40 flex items-center space-x-2 animate-bounce";
+            toast.innerHTML = `<i class="fa-solid fa-bell text-cyan-400"></i><span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3200);
+        }
+
+        function simulateNotificationAlert() {
+            showToast("Simulasi notifikasi WA SSCD berhasil dikirim!");
+            speakText("Simulasi notifikasi harian WhatsApp SSCD telah dikirim.");
+        }
+    </script>
+</body>
+</html>
